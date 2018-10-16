@@ -1,0 +1,50 @@
+{
+    "name": "Orden",
+    "fields": [
+        {
+            "fieldName": "total",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "EstadoOrden",
+            "fieldValues": "REGISTRADA,EN_PROCESO,CANCELADA,ANULADA,FINALIZADA,REMITIDA"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "detalleOrden",
+            "otherEntityName": "detalleOrden",
+            "otherEntityRelationshipName": "orden"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "paciente",
+            "otherEntityName": "paciente",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "entidadSalud",
+            "otherEntityName": "entidadSalud",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "medico",
+            "otherEntityName": "medico",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181008155545",
+    "entityTableName": "orden",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "labsys"
+}

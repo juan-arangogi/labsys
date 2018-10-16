@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="paciente">
+            <h2><span>Paciente</span> {{paciente.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Tipo Documento</span></dt>
+                <dd>
+                    <span>{{paciente.tipoDocumento}}</span>
+                </dd>
+                <dt><span>Documento</span></dt>
+                <dd>
+                    <span>{{paciente.documento}}</span>
+                </dd>
+                <dt><span>Nombres</span></dt>
+                <dd>
+                    <span>{{paciente.nombres}}</span>
+                </dd>
+                <dt><span>Apellidos</span></dt>
+                <dd>
+                    <span>{{paciente.apellidos}}</span>
+                </dd>
+                <dt><span>Genero</span></dt>
+                <dd>
+                    <span>{{paciente.genero}}</span>
+                </dd>
+                <dt><span>Fecha Nacimiento</span></dt>
+                <dd>
+                    <span>{{paciente.fechaNacimiento | date:'yyyy-MM-dd' }}</span>
+                </dd>
+                <dt><span>Telefono</span></dt>
+                <dd>
+                    <span>{{paciente.telefono}}</span>
+                </dd>
+                <dt><span>Celular</span></dt>
+                <dd>
+                    <span>{{paciente.celular}}</span>
+                </dd>
+                <dt><span>Email</span></dt>
+                <dd>
+                    <span>{{paciente.email}}</span>
+                </dd>
+                <dt><span>Direccion</span></dt>
+                <dd>
+                    <span>{{paciente.direccion}}</span>
+                </dd>
+                <dt><span>Ciudad</span></dt>
+                <dd>
+                    <span>{{paciente.ciudad}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Atras</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/paciente', paciente.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Editar</span>
+            </button>
+        </div>
+    </div>
+</div>

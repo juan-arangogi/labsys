@@ -1,0 +1,36 @@
+{
+    "name": "TipoMuestra",
+    "fields": [
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "procedimiento",
+            "otherEntityName": "procedimiento",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "tipoMuestra"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "recipiente",
+            "otherEntityName": "recipiente",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "tipoMuestra"
+        }
+    ],
+    "changelogDate": "20181008155542",
+    "entityTableName": "tipo_muestra",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "labsys"
+}

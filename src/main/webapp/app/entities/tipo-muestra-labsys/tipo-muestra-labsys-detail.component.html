@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="tipoMuestra">
+            <h2><span>Tipo Muestra</span> {{tipoMuestra.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Descripcion</span></dt>
+                <dd>
+                    <span>{{tipoMuestra.descripcion}}</span>
+                </dd>
+                <dt><span>Recipiente</span></dt>
+                <dd>
+                    <div *ngIf="tipoMuestra.recipienteId">
+                        <a [routerLink]="['/recipiente', tipoMuestra.recipienteId, 'view']">{{tipoMuestra.recipienteId}} - {{tipoMuestra.recipiente.descripcion}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Atras</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/tipo-muestra', tipoMuestra.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Editar</span>
+            </button>
+        </div>
+    </div>
+</div>

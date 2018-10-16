@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-orden-labsys-heading">Crear o Editar Orden</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!orden.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                           [(ngModel)]="orden.id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_paciente">Paciente</label>
+                    <select class="form-control" id="field_paciente" name="paciente" [(ngModel)]="orden.pacienteId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="pacienteOption.id" *ngFor="let pacienteOption of pacientes; trackBy: trackPacienteById">{{pacienteOption.documento}} - {{pacienteOption.nombres}} {{pacienteOption.apellidos}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_entidadSalud">Entidad Salud</label>
+                    <select class="form-control" id="field_entidadSalud" name="entidadSalud" [(ngModel)]="orden.entidadSaludId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="entidadSaludOption.id" *ngFor="let entidadSaludOption of entidadsaluds; trackBy: trackEntidadSaludById">{{entidadSaludOption.documento}} - {{entidadSaludOption.razonSocial}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_medico">Medico</label>
+                    <select class="form-control" id="field_medico" name="medico" [(ngModel)]="orden.medicoId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="medicoOption.id" *ngFor="let medicoOption of medicos; trackBy: trackMedicoById">{{medicoOption.documento}} - {{medicoOption.nombres}} {{medicoOption.apellidos}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_estado">Estado</label>
+                    <select class="form-control" name="estado" [(ngModel)]="orden.estado" id="field_estado" >
+                        <option value="REGISTRADA" (select)="true">REGISTRADA</option>
+                        <option value="EN_PROCESO">EN_PROCESO</option>
+                        <option value="CANCELADA">CANCELADA</option>
+                        <option value="ANULADA">ANULADA</option>
+                        <option value="FINALIZADA">FINALIZADA</option>
+                        <option value="REMITIDA">REMITIDA</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancelar</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Guardar</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

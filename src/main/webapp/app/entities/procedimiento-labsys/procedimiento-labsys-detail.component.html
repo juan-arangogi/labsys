@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="procedimiento">
+            <h2><span>Procedimiento</span> {{procedimiento.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Descripcion</span></dt>
+                <dd>
+                    <span>{{procedimiento.descripcion}}</span>
+                </dd>
+                <dt><span>Precio Unitario</span></dt>
+                <dd>
+                    <span>{{procedimiento.precioUnitario | currency }}</span>
+                </dd>
+                <dt><span>Tipo Muestra</span></dt>
+                <dd>
+                    <div *ngIf="procedimiento.tipoMuestraId">
+                        <a [routerLink]="['/tipo-muestra', procedimiento.tipoMuestraId, 'view']">{{procedimiento.tipoMuestraId}} - {{procedimiento.tipoMuestra.descripcion}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Atras</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/procedimiento', procedimiento.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Editar</span>
+            </button>
+        </div>
+    </div>
+</div>

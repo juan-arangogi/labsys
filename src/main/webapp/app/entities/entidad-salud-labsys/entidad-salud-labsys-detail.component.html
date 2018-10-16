@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="entidadSalud">
+            <h2><span>Entidad de Salud</span> {{entidadSalud.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Tipo Documento</span></dt>
+                <dd>
+                    <span>{{entidadSalud.tipoDocumento}}</span>
+                </dd>
+                <dt><span>Documento</span></dt>
+                <dd>
+                    <span>{{entidadSalud.documento}}</span>
+                </dd>
+                <dt><span>Razon Social</span></dt>
+                <dd>
+                    <span>{{entidadSalud.razonSocial}}</span>
+                </dd>
+                <dt><span>Direccion</span></dt>
+                <dd>
+                    <span>{{entidadSalud.direccion}}</span>
+                </dd>
+                <dt><span>Telefono</span></dt>
+                <dd>
+                    <span>{{entidadSalud.telefono}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Atras</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/entidad-salud', entidadSalud.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Editar</span>
+            </button>
+        </div>
+    </div>
+</div>

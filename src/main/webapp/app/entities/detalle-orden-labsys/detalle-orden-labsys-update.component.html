@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-detalle-orden-labsys-heading">Crear o Editar Detalle Orden</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!detalleOrden.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                           [(ngModel)]="detalleOrden.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_orden">Orden</label>
+                    <select class="form-control" id="field_orden" name="orden" [(ngModel)]="detalleOrden.ordenId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="ordenOption.id" *ngFor="let ordenOption of ordens; trackBy: trackOrdenById">Orden: {{ordenOption.id}} - Paciente: {{ordenOption.paciente.nombres}} {{ordenOption.paciente.apellidos}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_procedimiento">Procedimiento</label>
+                    <select class="form-control" id="field_procedimiento" name="procedimiento" [(ngModel)]="detalleOrden.procedimientoId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="procedimientoOption.id" *ngFor="let procedimientoOption of procedimientos; trackBy: trackProcedimientoById">{{procedimientoOption.id}} - {{procedimientoOption.descripcion}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cantidad">Cantidad</label>
+                    <input type="number" class="form-control" name="cantidad" id="field_cantidad"
+                           [(ngModel)]="detalleOrden.cantidad" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_descuento">Descuento</label>
+                    <input type="number" class="form-control" name="descuento" id="field_descuento"
+                           [(ngModel)]="detalleOrden.descuento" />
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancelar</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Guardar</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

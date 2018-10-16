@@ -1,0 +1,50 @@
+{
+    "name": "EntidadSalud",
+    "fields": [
+        {
+            "fieldName": "tipoDocumento",
+            "fieldType": "TipoDocumento",
+            "fieldValues": "ASI,MSI,CC,CE,RC,TI,CD"
+        },
+        {
+            "fieldName": "documento",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "razonSocial",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "direccion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefono",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "medico",
+            "otherEntityName": "medico",
+            "otherEntityRelationshipName": "entidadSalud"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "orden",
+            "otherEntityName": "orden",
+            "otherEntityRelationshipName": "entidadSalud"
+        }
+    ],
+    "changelogDate": "20181008155548",
+    "entityTableName": "entidad_salud",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "labsys"
+}

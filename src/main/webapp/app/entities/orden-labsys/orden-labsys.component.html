@@ -1,0 +1,87 @@
+<div>
+    <h2 id="page-heading">
+        <span>Ordens</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-orden-labsys" [routerLink]="['/orden/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Nueva Orden
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="ordens">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="pacienteId"><span>Paciente</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="entidadSaludId"><span>Entidad Salud</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="medicoId"><span>Medico</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="estado"><span>Estado</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="total"><span>Total</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let orden of ordens ;trackBy: trackId">
+                <td><a [routerLink]="['/orden', orden.id, 'view' ]">{{orden.id}}</a></td>
+                <td>
+                    <div *ngIf="orden.pacienteId">
+                        <a [routerLink]="['../paciente', orden.pacienteId , 'view' ]" >{{orden.paciente.nombres}} {{orden.paciente.apellidos}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="orden.entidadSaludId">
+                        <a [routerLink]="['../entidad-salud', orden.entidadSaludId , 'view' ]" >{{orden.entidadSaludId}} - {{orden.entidadSalud.razonSocial}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="orden.medicoId">
+                        <a [routerLink]="['../medico', orden.medicoId , 'view' ]" >{{orden.medico.nombres}} {{orden.medico.apellidos}}</a>
+                    </div>
+                </td>
+                <td *ngIf="orden.estado === 'REGISTRADA'"><span class="badge badge-info">{{orden.estado}}</span></td>
+                <td *ngIf="orden.estado === 'EN_PROCESO'"><span class="badge badge-primary">{{orden.estado}}</span></td>
+                <td *ngIf="orden.estado === 'CANCELADA'"><span class="badge badge-warning">{{orden.estado}}</span></td>
+                <td *ngIf="orden.estado === 'ANULADA'"><span class="badge badge-danger">{{orden.estado}}</span></td>
+                <td *ngIf="orden.estado === 'FINALIZADA'"><span class="badge badge-success">{{orden.estado}}</span></td>
+                <td *ngIf="orden.estado === 'REMITIDA'"><span class="badge badge-dark">{{orden.estado}}</span></td>
+                <td>{{orden.total | currency }}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/orden', orden.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">Detalle</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/orden', orden.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Editar</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'orden/'+ orden.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Eliminar</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="ordens && ordens.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

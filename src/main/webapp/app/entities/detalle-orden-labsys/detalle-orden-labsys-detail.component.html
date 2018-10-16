@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="detalleOrden">
+            <h2><span>Detalle Orden</span> {{detalleOrden.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Orden</span></dt>
+                <dd>
+                    <div *ngIf="detalleOrden.ordenId">
+                        <a [routerLink]="['/orden', detalleOrden.ordenId, 'view']">Orden: {{detalleOrden.ordenId}} - Paciente: {{detalleOrden.orden.paciente.nombres}} {{detalleOrden.orden.paciente.apellidos}}</a>
+                    </div>
+                </dd>
+                <dt><span>Procedimiento</span></dt>
+                <dd>
+                    <div *ngIf="detalleOrden.procedimientoId">
+                        <a [routerLink]="['/procedimiento', detalleOrden.procedimientoId, 'view']">{{detalleOrden.procedimientoId}} - {{detalleOrden.procedimiento.descripcion}}</a>
+                    </div>
+                </dd>
+            </dl>
+            <dt><span>Descuento</span></dt>
+            <dd>
+                <span>{{detalleOrden.descuento}}%</span>
+            </dd>
+            <dt><span>Cantidad</span></dt>
+            <dd>
+                <span>{{detalleOrden.cantidad}}</span>
+            </dd>
+            <dt><span>Total</span></dt>
+            <dd>
+                <span>{{detalleOrden.total | currency}}</span>
+            </dd>
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Atras</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/detalle-orden', detalleOrden.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Editar</span>
+            </button>
+        </div>
+    </div>
+</div>

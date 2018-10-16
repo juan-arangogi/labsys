@@ -1,0 +1,70 @@
+<div>
+    <h2 id="page-heading">
+        <span>Entidades de Salud</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-entidad-salud-labsys" [routerLink]="['/entidad-salud/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Nueva Entidad de Salud
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="entidadSaluds">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="tipoDocumento"><span>Tipo Documento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="documento"><span>Documento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="razonSocial"><span>Razon Social</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="direccion"><span>Direccion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="telefono"><span>Telefono</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let entidadSalud of entidadSaluds ;trackBy: trackId">
+                <td><a [routerLink]="['/entidad-salud', entidadSalud.id, 'view' ]">{{entidadSalud.id}}</a></td>
+                <td>{{entidadSalud.tipoDocumento}}</td>
+                <td>{{entidadSalud.documento}}</td>
+                <td>{{entidadSalud.razonSocial}}</td>
+                <td>{{entidadSalud.direccion}}</td>
+                <td>{{entidadSalud.telefono}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/entidad-salud', entidadSalud.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">Detalle</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/entidad-salud', entidadSalud.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Editar</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'entidad-salud/'+ entidadSalud.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Eliminar</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="entidadSaluds && entidadSaluds.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

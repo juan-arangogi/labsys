@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-medico-labsys-heading">Crear o Editar Medico</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!medico.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                           [(ngModel)]="medico.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipoDocumento">Tipo Documento</label>
+                    <select class="form-control" name="tipoDocumento" [(ngModel)]="medico.tipoDocumento" id="field_tipoDocumento" >
+                        <option value="ASI">ASI</option>
+                        <option value="MSI">MSI</option>
+                        <option value="CC">CC</option>
+                        <option value="CE">CE</option>
+                        <option value="RC">RC</option>
+                        <option value="TI">TI</option>
+                        <option value="CD">CD</option>
+                        <option value="NIT">NIT</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_documento">Documento</label>
+                    <input type="text" class="form-control" name="documento" id="field_documento"
+                           [(ngModel)]="medico.documento" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nombres">Nombres</label>
+                    <input type="text" class="form-control" name="nombres" id="field_nombres"
+                           [(ngModel)]="medico.nombres" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_apellidos">Apellidos</label>
+                    <input type="text" class="form-control" name="apellidos" id="field_apellidos"
+                           [(ngModel)]="medico.apellidos" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_especialidad">Especialidad</label>
+                    <select class="form-control" name="especialidad" [(ngModel)]="medico.especialidad" id="field_especialidad" >
+                        <option value="MEDICINA_GENERAL">MEDICINA_GENERAL</option>
+                        <option value="CARDIOLOGIA">CARDIOLOGIA</option>
+                        <option value="PEDIATRIA">PEDIATRIA</option>
+                        <option value="CIRUGIA">CIRUGIA</option>
+                        <option value="REUMATOLOGIA">REUMATOLOGIA</option>
+                        <option value="ORTOPEDIA">ORTOPEDIA</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tarjetaProfesional">Tarjeta Profesional</label>
+                    <input type="text" class="form-control" name="tarjetaProfesional" id="field_tarjetaProfesional"
+                           [(ngModel)]="medico.tarjetaProfesional" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_entidadSalud">Entidad Salud</label>
+                    <select class="form-control" id="field_entidadSalud" name="entidadSalud" [(ngModel)]="medico.entidadSaludId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="entidadSaludOption.id" *ngFor="let entidadSaludOption of entidadsaluds; trackBy: trackEntidadSaludById">{{entidadSaludOption.id}} - {{entidadSaludOption.razonSocial}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancelar</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Guardar</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

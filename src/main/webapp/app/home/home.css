@@ -2,12 +2,16 @@
 Main page styles
 ========================================================================== */
 
-.hipster {
+.laboratory {
     display: inline-block;
     width: 347px;
     height: 497px;
-    background: url('../../content/images/hipster.png') no-repeat center top;
+    background: url('../../content/images/tubo.jpg') no-repeat center top;
     background-size: contain;
+}
+
+.padding-top {
+    padding-top: 150px;
 }
 
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
@@ -16,8 +20,8 @@ Main page styles
     only screen and (-o-min-device-pixel-ratio: 2/1),
     only screen and (min-resolution: 192dpi),
     only screen and (min-resolution: 2dppx) {
-    .hipster {
-        background: url('../../content/images/hipster2x.png') no-repeat center top;
+    .laboratory {
+        background: url('../../content/images/tubo.jpg') no-repeat center top;
         background-size: contain;
     }
 }

@@ -1,0 +1,69 @@
+{
+    "name": "Paciente",
+    "fields": [
+        {
+            "fieldName": "tipoDocumento",
+            "fieldType": "TipoDocumento",
+            "fieldValues": "ASI,MSI,CC,CE,RC,TI,CD"
+        },
+        {
+            "fieldName": "documento",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nombres",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "apellidos",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "genero",
+            "fieldType": "Genero",
+            "fieldValues": "MASCULINO,FEMENINO"
+        },
+        {
+            "fieldName": "fechaNacimiento",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "telefono",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "celular",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "direccion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ciudad",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "orden",
+            "otherEntityName": "orden",
+            "otherEntityRelationshipName": "paciente"
+        }
+    ],
+    "changelogDate": "20181008155546",
+    "entityTableName": "paciente",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "labsys"
+}

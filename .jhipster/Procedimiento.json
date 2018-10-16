@@ -1,0 +1,40 @@
+{
+    "name": "Procedimiento",
+    "fields": [
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "precioUnitario",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "detalleOrden",
+            "otherEntityName": "detalleOrden",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "procedimiento"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "tipoMuestra",
+            "otherEntityName": "tipoMuestra",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "procedimiento"
+        }
+    ],
+    "changelogDate": "20181008155543",
+    "entityTableName": "procedimiento",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "labsys"
+}

@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="orden">
+            <h2><span>Orden</span> {{orden.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Paciente</span></dt>
+                <dd>
+                    <div *ngIf="orden.pacienteId">
+                        <a [routerLink]="['/paciente', orden.pacienteId, 'view']">{{orden.paciente.documento}} - {{orden.paciente.nombres}} {{orden.paciente.apellidos}}</a>
+                    </div>
+                </dd>
+                <dt><span>Entidad Salud</span></dt>
+                <dd>
+                    <div *ngIf="orden.entidadSaludId">
+                        <a [routerLink]="['/entidad-salud', orden.entidadSaludId, 'view']">{{orden.entidadSalud.documento}} - {{orden.entidadSalud.razonSocial}}</a>
+                    </div>
+                </dd>
+                <dt><span>Medico</span></dt>
+                <dd>
+                    <div *ngIf="orden.medicoId">
+                        <a [routerLink]="['/medico', orden.medicoId, 'view']">{{orden.medico.documento}} - {{orden.medico.nombres}} {{orden.medico.apellidos}}</a>
+                    </div>
+                </dd>
+                <dt><span>Total</span></dt>
+                <dd>
+                    <span>{{orden.total | currency}}</span>
+                </dd>
+                <dt><span>Estado</span></dt>
+                <dd>
+                    <span *ngIf="orden.estado === 'REGISTRADA'"><span class="badge badge-info">{{orden.estado}}</span></span>
+                    <span *ngIf="orden.estado === 'EN_PROCESO'"><span class="badge badge-primary">{{orden.estado}}</span></span>
+                    <span *ngIf="orden.estado === 'CANCELADA'"><span class="badge badge-warning">{{orden.estado}}</span></span>
+                    <span *ngIf="orden.estado === 'ANULADA'"><span class="badge badge-danger">{{orden.estado}}</span></span>
+                    <span *ngIf="orden.estado === 'FINALIZADA'"><span class="badge badge-success">{{orden.estado}}</span></span>
+                    <span *ngIf="orden.estado === 'REMITIDA'"><span class="badge badge-dark">{{orden.estado}}</span></span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Atras</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/orden', orden.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Editar</span>
+            </button>
+        </div>
+    </div>
+</div>

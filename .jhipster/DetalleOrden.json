@@ -1,0 +1,42 @@
+{
+    "name": "DetalleOrden",
+    "fields": [
+        {
+            "fieldName": "descuento",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "cantidad",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "total",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "procedimiento",
+            "otherEntityName": "procedimiento",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "detalleOrden"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "orden",
+            "otherEntityName": "orden",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181008155544",
+    "entityTableName": "detalle_orden",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "labsys"
+}

@@ -1,0 +1,94 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-paciente-labsys-heading">Crear o Editar Paciente</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!paciente.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                           [(ngModel)]="paciente.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipoDocumento">Tipo Documento</label>
+                    <select class="form-control" name="tipoDocumento" [(ngModel)]="paciente.tipoDocumento" id="field_tipoDocumento" >
+                        <option value="ASI">ASI</option>
+                        <option value="MSI">MSI</option>
+                        <option value="CC">CC</option>
+                        <option value="CE">CE</option>
+                        <option value="RC">RC</option>
+                        <option value="TI">TI</option>
+                        <option value="CD">CD</option>
+                        <option value="NIT">NIT</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_documento">Documento</label>
+                    <input type="text" class="form-control" name="documento" id="field_documento"
+                           [(ngModel)]="paciente.documento" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nombres">Nombres</label>
+                    <input type="text" class="form-control" name="nombres" id="field_nombres"
+                           [(ngModel)]="paciente.nombres" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_apellidos">Apellidos</label>
+                    <input type="text" class="form-control" name="apellidos" id="field_apellidos"
+                           [(ngModel)]="paciente.apellidos" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_genero">Genero</label>
+                    <select class="form-control" name="genero" [(ngModel)]="paciente.genero" id="field_genero" >
+                        <option value="MASCULINO">MASCULINO</option>
+                        <option value="FEMENINO">FEMENINO</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaNacimiento">Fecha Nacimiento</label>
+                    <div class="input-group">
+                        <input id="field_fechaNacimiento" type="text" class="form-control" name="fechaNacimiento" ngbDatepicker  #fechaNacimientoDp="ngbDatepicker" [(ngModel)]="paciente.fechaNacimiento"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaNacimientoDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_telefono">Telefono</label>
+                    <input type="text" class="form-control" name="telefono" id="field_telefono"
+                           [(ngModel)]="paciente.telefono" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_celular">Celular</label>
+                    <input type="text" class="form-control" name="celular" id="field_celular"
+                           [(ngModel)]="paciente.celular" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           [(ngModel)]="paciente.email" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_direccion">Direccion</label>
+                    <input type="text" class="form-control" name="direccion" id="field_direccion"
+                           [(ngModel)]="paciente.direccion" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ciudad">Ciudad</label>
+                    <input type="text" class="form-control" name="ciudad" id="field_ciudad"
+                           [(ngModel)]="paciente.ciudad" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancelar</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Guardar</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

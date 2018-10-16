@@ -1,0 +1,55 @@
+{
+    "name": "Medico",
+    "fields": [
+        {
+            "fieldName": "tipoDocumento",
+            "fieldType": "TipoDocumento",
+            "fieldValues": "ASI,MSI,CC,CE,RC,TI,CD"
+        },
+        {
+            "fieldName": "documento",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nombres",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "apellidos",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "especialidad",
+            "fieldType": "Especialidad",
+            "fieldValues": "MEDICINA_GENERAL,CARDIOLOGIA,PEDIATRIA,CIRUGIA,REUMATOLOGIA,ORTOPEDIA"
+        },
+        {
+            "fieldName": "tarjetaProfesional",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "orden",
+            "otherEntityName": "orden",
+            "otherEntityRelationshipName": "medico"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "entidadSalud",
+            "otherEntityName": "entidadSalud",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181008155547",
+    "entityTableName": "medico",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "labsys"
+}

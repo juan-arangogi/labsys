@@ -1,0 +1,29 @@
+{
+    "name": "Recipiente",
+    "fields": [
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "tipoMuestra",
+            "otherEntityName": "tipoMuestra",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "recipiente"
+        }
+    ],
+    "changelogDate": "20181008155541",
+    "entityTableName": "recipiente",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "labsys"
+}
